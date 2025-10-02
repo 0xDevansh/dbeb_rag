@@ -1,0 +1,11 @@
+langgraph
+langchain
+langchain-core
+langchain-community
+langchain-google-genai
+langchain-huggingface
+langchain-text-splitters
+langchain-qdrant
+qdrant-client
+sentence-transformers
+pypdf
