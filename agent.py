@@ -9,57 +9,27 @@ import logging
 logging.getLogger('google.api_core').setLevel(logging.WARNING)
 logging.getLogger('grpc').setLevel(logging.WARNING)
 
-import pprint
-import sqlite3
 import asyncio
-import json
 import uuid
-from IPython.display import Image, display
-from datetime import datetime
-
-from typing import Dict, List, Optional, Any, TypedDict, Annotated
-from dataclasses import dataclass, field
-from enum import Enum
-
-from typing import Dict, List, Any, TypedDict, Literal
 
 from langgraph.prebuilt import ToolNode, tools_condition
 
-from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph import StateGraph, START, END, MessagesState
-from langgraph.graph.message import add_messages
-from langgraph.checkpoint.memory import InMemorySaver
-from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 
 from langchain_community.storage import SQLStore
-# from langchain_community.storage.sql import SQLStore
-from langchain_community.document_loaders import FileSystemBlobLoader
-from langchain_community.document_loaders.generic import GenericLoader
-from langchain_community.document_loaders.parsers import PyPDFParser
-# from langchain_community.embeddings import HuggingFaceEmbeddings
 
 from langchain_huggingface import HuggingFaceEmbeddings
-
-from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from langchain_qdrant import QdrantVectorStore
 
 from qdrant_client import QdrantClient
 
-from langchain.output_parsers import OutputFixingParser, PydanticOutputParser
-
 from langchain_core.tools import Tool
-from langchain_core.documents import Document
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.messages import BaseMessage, HumanMessage, AIMessage, AnyMessage, SystemMessage, AIMessageChunk
-from langchain_core.runnables import RunnablePassthrough
-from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.messages import HumanMessage, AnyMessage, AIMessageChunk
 # from langchain_core.pydantic _v1import BaseModel, Field
 
-from pydantic import BaseModel, Field
-
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 if torch.cuda.is_available():
     device = 'cuda'
