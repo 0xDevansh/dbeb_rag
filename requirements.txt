@@ -9,3 +9,6 @@ langchain-qdrant
 qdrant-client
 sentence-transformers
 pypdf
+nest_asyncio
+streamlit
+langgraph-checkpoint-sqlite
